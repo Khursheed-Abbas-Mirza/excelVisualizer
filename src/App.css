@@ -1,41 +1,6 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-p{
-  text-align: center;
-  font-size: 32px;
-}
-.input-group{
-  margin-left: auto;
-  margin-right: auto;
- 
-  width: fit-content;
-  min-width: 300px;
-  margin-top: 50px;
-}
-.input-group input{
-  outline: none;
-  border: none;
-  padding: 5px;
-  border-radius: 5px;
-}
-.input-group button{
-  background-color: rgb(71, 42, 218);
-  color: whitesmoke;
-  margin: 3%;
-  border: none;
-  outline: none;
-  padding: 1%;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.container{
-  width: 100vw;
-  height: auto;
-  min-height: 100vh;
-  background: darkgray;
-}
+@import "tailwindcss";
+
+
 .mc{
   display: grid;
   grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
@@ -66,21 +31,33 @@ a{
   }
 }
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    }
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: relative;
+        animation: rotate 1s linear infinite
+      }
+      .loader::before , .loader::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+        border: 5px solid #FFF;
+        animation: prixClipFix 2s linear infinite ;
+      }
+      .loader::after{
+        transform: rotate3d(90, 90, 0, 180deg );
+        border-color: #FF3D00;
+      }
 
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
+      @keyframes rotate {
+        0%   {transform: rotate(0deg)}
+        100%   {transform: rotate(360deg)}
+      }
+
+      @keyframes prixClipFix {
+          0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+          50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+          75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      }

@@ -1,15 +1,26 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import { Home } from './components/Home';
 import './App.css';
 import Messages from './components/Messages';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router,Routes,Route } from 'react-router';
+import Add from './components/Add';
 function App() {
  
   return (
-    <div className='container'>
-    <Home/>
-    <Messages/>
-    </div>
+    <>
+      <Router>
+        {/* <Navbar/> */}
+        <div className='mt-[80px]'>
+
+        <Routes>
+
+          <Route path='/' element={<Home/>}/>
+          {/* <Route path='/add' element={<Add/>}/> */}
+        </Routes>
+        </div>
+      </Router>
+    </>
   )
 }
 

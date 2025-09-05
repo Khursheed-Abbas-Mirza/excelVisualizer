@@ -6,7 +6,8 @@ const FileData=(props)=>{
     const [rows,setRows]=useState([]);
     const [msg,setmsg]=useState(rows);
     const [loading,setloading]=useState(false)
-    const [showFilters,setFilters]=useState(false)
+    const [showFilters,setFilters]=useState(false);
+    
     const getFileUrl=(url)=>{
     const regex = /\/d\/([a-zA-Z0-9-_]+)/; 
     const match = url.match(regex);
@@ -21,14 +22,18 @@ const FileData=(props)=>{
         const res=await file.arrayBuffer();
         const data=Excel.read(res,{type:"array"})
         const data2=Excel.utils.sheet_to_json(data.Sheets[data.SheetNames[0]],{dateNF: 'yyyy-mm-dd',raw:false})
-        setRows(data2)
+        setRows(data2);
         setmsg(data2);
-        setFilters(true)
-        setloading(false)
+        setFilters(true);
+        setloading(false);
+       
     }
     const filterByDate=(date)=>{
         setloading(true)
+        alert(date)
+        console.log(rows)
         const filter=rows.filter((row)=>row.Date==date)
+        console.log(filter)
         setmsg(filter)
         setFilters(true)
         setloading(false)
