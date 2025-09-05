@@ -12,7 +12,7 @@ const Messages = () => {
 
         <div className='m-5 flex gap-0.5 items-center'>
         <span className='text-blue-600'>Filter By Date : </span>
-        <input type='date' onChange={(e)=>setDate(e.target.value)} value={date}/><br/>
+        <input type='date' className='border border-black' onChange={(e)=>setDate(e.target.value)} value={date}/><br/>
         <button className='bg-blue-500 p-3 rounded-sm text-white w-auto cursor-pointer' onClick={apply}>Apply Filter</button>
     </div>
     } 
